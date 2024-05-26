@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Container from "./ui/Container";
+import ContextProviders from "@/lib/ContextProviders";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "觉意阅读",
@@ -15,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body>
-        <Container>{children}</Container>
+        <ContextProviders>
+          <Container>{children}</Container>
+        </ContextProviders>
+        <Toaster />
       </body>
     </html>
   );
