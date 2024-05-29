@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth antialiased">
-      <body>
+      <body className="bg-paperwhite">
         <ContextProviders>
           <Container>{children}</Container>
         </ContextProviders>
