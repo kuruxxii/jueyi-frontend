@@ -36,7 +36,7 @@ export default function ArticlePreview({
         <section className="flex flex-col justify-between h-60">
           <div className="mb-4 :md:mb-0">
             <h3 className="text-3xl mb-3 font-black">
-              <Link href={`/articles/${slug}`}>{title}</Link>
+              <Link href={`articles/${slug}`}>{title}</Link>
             </h3>
             <p
               className="pt-2 overflow-hidden tracking-wide"
@@ -52,15 +52,15 @@ export default function ArticlePreview({
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
               <span className="flex flex-wrap">
-                <p className="font-extrabold pr-2">作者</p>
+                <p className="font-semibold pr-2">作者</p>
                 <p>{author}</p>
               </span>
               <span className="flex flex-wrap">
-                <p className="font-extrabold pr-2">日期</p>
+                <p className="font-semibold pr-2">日期</p>
                 {format(new Date(createdAt), "yyyy-MM-dd")}
               </span>
               <span className="flex flex-wrap">
-                <p className="font-extrabold pr-2">预计阅读时间</p>
+                <p className="font-semibold pr-2">预计阅读时间</p>
                 <p>{`${read}分钟`}</p>
               </span>
             </div>
