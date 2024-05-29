@@ -60,7 +60,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <PostNavigation href="/home/articles">精选文章</PostNavigation>
       <article className="grid md:grid-cols-2 gap-6 md:gap-6 pb-6 md:pb-24">
         <h2 className="text-6xl font-black">{article.title}</h2>
-        <p>{article.introduction}</p>
+        <p>
+          <span className="font-bold text-xl">Harry说：</span>
+          {article.introduction}
+        </p>
       </article>
       <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 mb-8">
         <div className="flex flex-col sm:flex-row md:items-center gap-2 sm:gap-6">
