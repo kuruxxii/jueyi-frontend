@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Pagination from "@/app/ui/Pagination";
+import ArticlePreview from "@/app/ui/articles/ArticlePreview";
 
 type ArticlePreview = {
   slug: string;
@@ -15,6 +16,7 @@ type ArticlePreview = {
   author: string;
   read: number;
   topic: string;
+  createdAt: string;
 };
 type Topic =
   | "all"
@@ -100,7 +102,7 @@ export default function ArticlePreviewsPage() {
       />
       <NewsTicker />
       <div className="flex flex-wrap justify-between items-center gap-2 md:gap-0 my-6">
-        <p className="font-semibold uppercase">领域专题</p>
+        <p className="font-semibold uppercase text-lg">领域专题</p>
         {articlePreviews && (
           <div className="flex flex-wrap gap-2">
             {topics.map((topic) => (
@@ -117,6 +119,14 @@ export default function ArticlePreviewsPage() {
             ))}
           </div>
         )}
+      </div>
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-24">
+        <div className="lg:w-3/4">
+          {articlePreviews.map((article) => (
+            <ArticlePreview key={article.slug} {...article} />
+          ))}
+        </div>
+        <div className="lg:w-1/4">{/* <Sidebar /> */}</div>
       </div>
       <Pagination totalPages={totalPages} />
     </main>
