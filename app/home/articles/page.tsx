@@ -126,7 +126,7 @@ export default function ArticlePreviewsPage() {
             <ArticlePreview key={article.slug} {...article} />
           ))}
         </div>
-        <div className="lg:w-1/4">{/* <Sidebar /> */}</div>
+        <div className="hidden lg:w-1/4">{/* <Sidebar /> */}</div>
       </div>
       <Pagination totalPages={totalPages} />
     </main>
