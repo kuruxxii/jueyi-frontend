@@ -87,7 +87,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <div>
         <img src={article.coverUrl} alt={article.title} className="grayscale" />
       </div>
-      <article className="max-w-[800px] prose lg:prose-lg mx-auto mt-6 mb-24">
+      <article className="max-w-[800px] prose lg:prose-lg mx-auto mt-6 mb-24 text-black">
         <Markdown>{article.content}</Markdown>
       </article>
     </main>
