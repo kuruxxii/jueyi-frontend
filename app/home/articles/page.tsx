@@ -25,7 +25,7 @@ type Topic =
   | "workplace"
   | "school";
 
-export default function ArticlePreviewPage() {
+export default function ArticlePreviewsPage() {
   const [articlePreviews, setArticlePreviews] = useState<ArticlePreview[]>([]);
   const topicMap = {
     all: "全部",
@@ -50,7 +50,7 @@ export default function ArticlePreviewPage() {
   const { replace } = useRouter();
   const selectedTopic = searchParams.get("topic") || "all";
   const currentPage = Number(searchParams.get("page")) || 1;
-  const [totalPages, setTotalPages] = useState<number>(100);
+  const [totalPages, setTotalPages] = useState<number>(0);
   const handleFilter = (topic: string) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
@@ -61,6 +61,37 @@ export default function ArticlePreviewPage() {
     }
     replace(`${pathname}?${params.toString()}`);
   };
+  useEffect(() => {
+    const getFilteredArticlePreviewTotalPages = async () => {
+      let url = `http://localhost:4000/api/articles/pages`;
+      if (selectedTopic !== "all") {
+        url += `?topic=${selectedTopic}`;
+      }
+      const response = await fetch(url, {
+        credentials: "include",
+        cache: "no-store",
+      });
+      const json = await response.json();
+      setTotalPages(json);
+    };
+    getFilteredArticlePreviewTotalPages();
+  }, [selectedTopic]);
+  useEffect(() => {
+    const getFilteredArticlePreviews = async () => {
+      let url = `http://localhost:4000/api/articles?page=${currentPage}`;
+      if (selectedTopic !== "all") {
+        url += `&topic=${selectedTopic}`;
+      }
+      const response = await fetch(url, {
+        credentials: "include",
+        cache: "no-store",
+      });
+      const articlePreviews = await response.json();
+      setArticlePreviews(articlePreviews);
+    };
+    getFilteredArticlePreviews();
+  }, [currentPage, selectedTopic]);
+
   return (
     <main className="flex flex-col min-h-screen max-w-[95rem] w-full mx-auto lg:pt-0 sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2">
       <PageTitle
