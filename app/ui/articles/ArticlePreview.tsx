@@ -22,7 +22,7 @@ export default function ArticlePreview({
   createdAt: string;
 }) {
   return (
-    <article key={title}>
+    <article>
       <div className="border-b-2 border-black py-6 mb-6  grid md:grid-cols-[0fr_1fr] gap-6 sm:gap-12">
         <Link href={`articles/${slug}`} className="h-60 w-60">
           <Image
@@ -33,13 +33,13 @@ export default function ArticlePreview({
             height={240}
           />
         </Link>
-        <article className="flex flex-col justify-between h-60">
+        <section className="flex flex-col justify-between h-60">
           <div className="mb-4 :md:mb-0">
             <h3 className="text-3xl mb-3 font-black">
               <Link href={`/articles/${slug}`}>{title}</Link>
             </h3>
             <p
-              className="pt-2 overflow-hidden  tracking-wide"
+              className="pt-2 overflow-hidden tracking-wide"
               style={{
                 display: "-webkit-box",
                 WebkitLineClamp: "4",
@@ -68,7 +68,7 @@ export default function ArticlePreview({
               <p className="uppercase">{topic}</p>
             </span>
           </div>
-        </article>
+        </section>
       </div>
     </article>
   );
