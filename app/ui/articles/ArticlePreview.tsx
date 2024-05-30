@@ -24,7 +24,9 @@ export default function ArticlePreview({
   return (
     <article>
       <div className="border-b-2 border-black py-6 mb-6  grid md:grid-cols-[0fr_1fr] gap-6 sm:gap-12">
-        <Link href={`articles/${slug}`} className="hidden sm:block h-60 w-60">
+        <Link
+          href={`/home/articles/${slug}`}
+          className="hidden sm:block h-60 w-60">
           <Image
             className="w-full h-full grayscale object-cover hover:scale-105 transition"
             src={coverUrl}
@@ -36,7 +38,7 @@ export default function ArticlePreview({
         <section className="flex flex-col justify-between h-60">
           <div className="mb-4 :md:mb-0">
             <h3 className="text-xl sm:text-3xl mb-3 font-black">
-              <Link href={`articles/${slug}`}>{title}</Link>
+              <Link href={`/home/articles/${slug}`}>{title}</Link>
             </h3>
             <p
               className="text-sm sm:text-base pt-2 overflow-hidden tracking-wide"

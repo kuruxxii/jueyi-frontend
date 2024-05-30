@@ -76,7 +76,7 @@ export default function JournalsPage() {
             </div>
             <Link href={`/home/journals/${journal.vol}`}>
               <Image
-                className="w-full my-8 hover:scale-105 transition grayscale"
+                className="my-8 hover:scale-105 transition grayscale h-96"
                 src={journal.coverUrl}
                 alt={journal.title}
                 width={430}
