@@ -66,9 +66,10 @@ export default function JournalsPage() {
       <NewsTicker />
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-black border-collapse mb-6">
         {journals.map((journal) => (
-          <article className="border border-black p-8" key={journal.vol}>
+          <article className="border border-black p-8" key={journal.title}>
             <div className="flex items-center justify-between">
               {format(new Date(journal.createdAt), "yyyy-MM-dd")}
+              <span>{journal.vol}</span>
             </div>
             <Link href={`/home/journals/${journal.vol}`}>
               <img

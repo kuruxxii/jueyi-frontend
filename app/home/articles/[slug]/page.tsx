@@ -60,10 +60,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <PostNavigation href="/home/articles">精选文章</PostNavigation>
       <article className="grid md:grid-cols-2 gap-6 md:gap-6 pb-6 md:pb-24">
         <h2 className="text-6xl font-black">{article.title}</h2>
-        <p>
-          <span className="font-bold text-xl">Harry说：</span>
-          {article.introduction}
-        </p>
+        <div>
+          <span className="font-bold text-2xl">Harry说：</span>
+          <p className="text-lg">{article.introduction}</p>
+        </div>
       </article>
       <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 mb-8">
         <div className="flex flex-col sm:flex-row md:items-center gap-2 sm:gap-6">
@@ -87,7 +87,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <div>
         <img src={article.coverUrl} alt={article.title} className="grayscale" />
       </div>
-      <article className="max-w-[800px] prose lg:prose-lg mx-auto mt-6 mb-24 text-black">
+      <article className="max-w-[900px] prose-lg lg:prose-2xl mx-auto mt-6 mb-24 text-black">
         <Markdown>{article.content}</Markdown>
       </article>
     </main>
