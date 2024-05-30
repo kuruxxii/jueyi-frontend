@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import PostNavigation from "@/app/ui/PostNavigation";
 import { format } from "date-fns";
 import Markdown from "markdown-to-jsx";
+import { usePathname } from "next/navigation";
 
 type Topic =
   | "personal"
@@ -35,6 +36,10 @@ type Article = {
 };
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
   const [article, setArticle] = useState<Article>();
   useEffect(() => {
     const getAnArticle = async () => {

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import PostNavigation from "@/app/ui/PostNavigation";
 import { format } from "date-fns";
 import ArticlePreview from "@/app/ui/articles/ArticlePreview";
+import { usePathname } from "next/navigation";
 
 type Topic =
   | "personal"
@@ -43,6 +44,10 @@ export type Journal = {
 };
 
 export default function JournalPage({ params }: { params: { vol: number } }) {
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
   const [journal, setJournal] = useState<Journal>();
   const [articlePreviews, setArticlePreviews] = useState<ArticlePreview[]>();
   useEffect(() => {
