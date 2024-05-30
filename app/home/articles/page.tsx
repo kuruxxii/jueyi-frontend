@@ -124,11 +124,16 @@ export default function ArticlePreviewsPage() {
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-24">
         <div className="lg:w-3/4">
           {articlePreviews.map((article) => (
-            <ArticlePreview key={article.slug} {...article} />
+            <ArticlePreview
+              key={article.slug}
+              selectedTopic={selectedTopic}
+              currentPage={currentPage.toString()}
+              {...article}
+            />
           ))}
         </div>
         <div className="hidden lg:block 2xl:w-1/4">
-          <Sidebar />
+          <Sidebar selectedTopic={selectedTopic} currentPage={currentPage} />
         </div>
       </div>
       <Pagination totalPages={totalPages} />

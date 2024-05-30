@@ -7,7 +7,13 @@ type Recommendation = {
   author: string;
 };
 
-export default function Sidebar() {
+export default function Sidebar({
+  selectedTopic,
+  currentPage,
+}: {
+  selectedTopic: string;
+  currentPage: string;
+}) {
   const [recommendations, setRecommendations] = useState<Recommendation[]>();
   useEffect(() => {
     const getRecommendations = async () => {
@@ -35,7 +41,8 @@ export default function Sidebar() {
                 <p className="text-2xl font-semibold">{`0${index + 1}`}</p>
                 <article className="flex flex-col gap-4">
                   <h3 className="text-2xl font-semibold">
-                    <Link href={`/home/articles/${article.slug}`}>
+                    <Link
+                      href={`/home/articles/${selectedTopic}/${currentPage}/${article.slug}`}>
                       {article.title}
                     </Link>
                   </h3>

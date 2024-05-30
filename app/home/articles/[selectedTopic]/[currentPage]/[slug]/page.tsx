@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import PostNavigation from "@/app/ui/PostNavigation";
 import { format } from "date-fns";
 import Markdown from "markdown-to-jsx";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 
 type Topic =
   | "personal"
@@ -35,7 +35,12 @@ type Article = {
   createdAt: string;
 };
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
+export default function ArticlePage() {
+  const params = useParams<{
+    selectedTopic: string;
+    currentPage: string;
+    slug: string;
+  }>();
   const pathname = usePathname();
   useEffect(() => {
     window.scroll(0, 0);
@@ -62,7 +67,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   }
   return (
     <main className="max-w-[95rem] w-full mx-auto sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2">
-      <PostNavigation href="/home/articles">精选文章</PostNavigation>
+      <PostNavigation
+        href={`/home/articles/?page=${params.currentPage}&topic=${params.selectedTopic}`}>
+        精选文章
+      </PostNavigation>
       <article className="grid md:grid-cols-2 gap-6 md:gap-6 pb-6 md:pb-24">
         <h2 className="text-6xl font-black">{article.title}</h2>
         <div>
