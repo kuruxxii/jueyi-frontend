@@ -37,7 +37,7 @@ type Article = {
 
 export default function ArticlePage() {
   const params = useParams<{
-    selectedTopic: String;
+    selectedTopic: string;
     currentPage: string;
     slug: string;
   }>();
