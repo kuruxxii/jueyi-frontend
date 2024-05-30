@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
+import Image from "next/image";
 
 type Journal = {
   title: string;
@@ -66,24 +67,38 @@ export default function JournalsPage() {
       <NewsTicker />
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-black border-collapse mb-6">
         {journals.map((journal) => (
-          <article className="border border-black p-8" key={journal.title}>
-            <div className="flex items-center justify-between">
+          <article
+            className="border border-black p-8 h-screen"
+            key={journal.title}>
+            <div className="flex items-center justify-between text-xl">
               {format(new Date(journal.createdAt), "yyyy-MM-dd")}
-              <span>{journal.vol}</span>
+              <span>Vol. {journal.vol}</span>
             </div>
             <Link href={`/home/journals/${journal.vol}`}>
-              <img
-                className="w-full my-8 hover:scale-105 transition"
+              <Image
+                className="w-full my-8 hover:scale-105 transition grayscale"
                 src={journal.coverUrl}
                 alt={journal.title}
+                width={430}
+                height={430}
               />
             </Link>
-            <h2 className="heading3-title mb-3">
+            <h2 className="text-3xl font-extrabold mb-6">
               <Link href={`/home/journals/${journal.vol}`}>
-                {journal.title}
+                <span>{journal.title}</span>
               </Link>
             </h2>
-            <p className="mt-3 mb-12">{journal.description}</p>
+            <p
+              className="mt-3 mb-12 tracking-wide"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: "8",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}>
+              {journal.description}
+            </p>
           </article>
         ))}
       </div>

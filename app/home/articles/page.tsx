@@ -108,7 +108,7 @@ export default function ArticlePreviewsPage() {
           <div className="flex flex-wrap gap-2">
             {topics.map((topic) => (
               <Button
-                className={`px-3 py-2 bg-paperwhite text-black hover:bg-black hover:text-white border border-black rounded-full ${
+                className={`px-3 py-2 bg-white text-black hover:bg-black hover:text-white border border-black rounded-full ${
                   topic === selectedTopic
                     ? "bg-black text-paperwhite"
                     : "border-black"
