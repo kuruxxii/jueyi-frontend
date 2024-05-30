@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Pagination from "@/app/ui/Pagination";
 import ArticlePreview from "@/app/ui/articles/ArticlePreview";
+import Sidebar from "@/app/ui/Sidebar";
 
 type ArticlePreview = {
   slug: string;
@@ -126,7 +127,9 @@ export default function ArticlePreviewsPage() {
             <ArticlePreview key={article.slug} {...article} />
           ))}
         </div>
-        <div className="hidden lg:w-1/4">{/* <Sidebar /> */}</div>
+        <div className="hidden lg:block 2xl:w-1/4">
+          <Sidebar />
+        </div>
       </div>
       <Pagination totalPages={totalPages} />
     </main>
