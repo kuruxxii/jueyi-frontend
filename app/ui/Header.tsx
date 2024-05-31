@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUserRound } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useAuthContext } from "@/lib/AuthContextProvider";
 
 type MenuItem = {
   href: string;
@@ -23,6 +25,7 @@ const menu: MenuItem[] = [
 ];
 
 export default function Header() {
+  const { logout } = useAuthContext();
   return (
     <header>
       <div className="flex justify-between items-center py-3 border-b border-black">
@@ -54,7 +57,7 @@ export default function Header() {
             className="w-full pt-14"
             aria-label="Menu Toggle">
             <nav
-              className="flex flex-col flex-1 justify-end gap-6 font-light"
+              className="flex flex-col flex-1 justify-end gap-6"
               aria-labelledby="mobile-nav">
               {menu.map((menuItem, index) => (
                 <Link key={index} href={menuItem.href}>
@@ -80,7 +83,21 @@ export default function Header() {
             xmlns="http://www.w3.org/2000/svg">
             <rect width="15" height="1" fill="black" />
           </svg>
-          <CircleUserRound strokeWidth={1} />
+          <Sheet>
+            <SheetTrigger aria-labelledby="button-label">
+              <CircleUserRound strokeWidth={1} />
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-48 pt-14"
+              aria-label="User Menu Toggle">
+              <nav
+                className="flex flex-col flex-1 justify-end gap-6"
+                aria-labelledby="mobile-nav">
+                <Button onClick={logout}>退出登录</Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </nav>
       </div>
     </header>
