@@ -7,6 +7,7 @@ type User = { email: string };
 type AuthContext = {
   isAuthenticated: boolean;
   user: User | undefined;
+  logout: () => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContext | null>(null);
@@ -18,6 +19,17 @@ export default function AuthContextProvider({
 }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | undefined>(undefined);
+  const logout = async () => {
+    try {
+      await fetch("http://localhost:4000/api/auth/logout", {
+        credentials: "include",
+      });
+      setIsAuthenticated(false);
+      setUser(undefined);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
 
   useEffect(() => {
     // Check initial authentication status when the app loads
@@ -39,7 +51,7 @@ export default function AuthContextProvider({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, logout }}>
       {children}
     </AuthContext.Provider>
   );
