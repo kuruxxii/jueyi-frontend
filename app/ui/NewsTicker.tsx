@@ -1,15 +1,21 @@
 "use client";
 
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
-
-const news = [
-  "大家好呀！我是Harry！欢迎来到觉意阅读！🎉",
-  "每期视频的读书笔记也都会放在这里噢！大家可随时访问和下载！",
-  "学习最重要的是坚持长期主义，希望Harry能够有幸陪伴你，终身学习，终身成长。共勉。",
-];
+import { useState, useEffect, useRef } from "react";
 
 export default function NewsTicker() {
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const getNews = async () => {
+      let url = `http://localhost:4000/api/news`;
+      const response = await fetch(url, {
+        credentials: "include",
+      });
+      const { content } = await response.json();
+      setNews(content);
+    };
+    getNews();
+  }, []);
   const newsText = useRef<HTMLDivElement | null>(null);
   let xPercent = 0;
   const animationDuration = 20;
@@ -36,7 +42,7 @@ export default function NewsTicker() {
         animation.kill();
       };
     }
-  }, [xPercent]);
+  }, [xPercent, news]);
 
   return (
     <div className="flex bg-black text-white py-5 max-w-[95rem] w-full mx-auto relative overflow-hidden">
