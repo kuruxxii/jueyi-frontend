@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, useState, useEffect, useContext } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
-type User = { email: string };
+type User = { email: string; endDate: string };
 
 type AuthContext = {
   isAuthenticated: boolean;
@@ -17,6 +18,7 @@ export default function AuthContextProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | undefined>(undefined);
   const logout = async () => {
@@ -39,8 +41,8 @@ export default function AuthContextProvider({
           credentials: "include",
         });
         const json = await response.json();
-        if (json.isAuthenticated) {
-          setIsAuthenticated(true);
+        if (response.ok) {
+          setIsAuthenticated(json.isAuthenticated);
           setUser(json.user);
         }
       } catch (error) {
@@ -48,7 +50,7 @@ export default function AuthContextProvider({
       }
     };
     checkAuthStatus();
-  }, []);
+  }, [toast]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, user, logout }}>
