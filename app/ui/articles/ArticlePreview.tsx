@@ -32,7 +32,7 @@ export default function ArticlePreview({
           href={`/home/articles/${selectedTopic}/${currentPage}/${slug}`}
           className="hidden sm:block h-60 w-60">
           <Image
-            className="w-full h-full grayscale object-cover hover:scale-105 transition"
+            className="w-full h-full object-cover hover:scale-105 transition"
             src={coverUrl}
             alt={title}
             width={240}

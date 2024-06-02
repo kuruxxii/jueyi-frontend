@@ -93,7 +93,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
         </div>
       </div>
       <div>
-        <img src={journal.coverUrl} alt={journal.title} className="grayscale" />
+        <img src={journal.coverUrl} alt={journal.title} className="" />
       </div>
       <section className="mx-auto mt-6 mb-24">
         {articlePreviews.map((article) => (
