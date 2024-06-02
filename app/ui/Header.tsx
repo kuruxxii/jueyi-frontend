@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuthContext } from "@/lib/AuthContextProvider";
+import { format } from "date-fns";
 
 type MenuItem = {
   href: string;
@@ -25,7 +26,7 @@ const menu: MenuItem[] = [
 ];
 
 export default function Header() {
-  const { logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
   return (
     <header>
       <div className="flex justify-between items-center py-3 border-b border-black">
@@ -89,11 +90,14 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-48 pt-14"
+              className="w-64 pt-14"
               aria-label="User Menu Toggle">
               <nav
-                className="flex flex-col flex-1 justify-end gap-6"
+                className="flex flex-col h-[50rem] justify-between"
                 aria-labelledby="mobile-nav">
+                <div>
+                  订阅到期日期： {format(new Date(user!.endDate), "yyyy-MM-dd")}
+                </div>
                 <Button onClick={logout}>退出登录</Button>
               </nav>
             </SheetContent>
