@@ -98,7 +98,7 @@ export default function ArticlePage() {
           </span>
         </div>
         <div>
-          <img src={article.coverUrl} alt={article.title} className="" />
+          <img src={article.coverUrl} alt={article.title} />
         </div>
         <article className="max-w-[900px] prose-lg lg:prose-2xl mx-auto mt-6 mb-24 text-black">
           <Markdown>{article.content}</Markdown>
