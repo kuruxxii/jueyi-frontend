@@ -90,13 +90,16 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-64 pt-14"
+              className="w-72 pt-14"
               aria-label="User Menu Toggle">
               <nav
                 className="flex flex-col h-[50rem] justify-between"
                 aria-labelledby="mobile-nav">
-                <div>
+                <div className="flex flex-col gap-6">
                   订阅到期日期： {format(new Date(user!.endDate), "yyyy-MM-dd")}
+                  <Link href="https://jinshuju.net/f/PHtWG1" target="_blank">
+                    <Button>续费订阅</Button>
+                  </Link>
                 </div>
                 <Button onClick={logout}>退出登录</Button>
               </nav>
