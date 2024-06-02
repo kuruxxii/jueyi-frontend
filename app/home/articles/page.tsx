@@ -133,7 +133,10 @@ export default function ArticlePreviewsPage() {
           ))}
         </div>
         <div className="hidden lg:block 2xl:w-1/4">
-          <Sidebar selectedTopic={selectedTopic} currentPage={currentPage} />
+          <Sidebar
+            selectedTopic={selectedTopic}
+            currentPage={currentPage.toString()}
+          />
         </div>
       </div>
       <Pagination totalPages={totalPages} />
