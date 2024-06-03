@@ -5,6 +5,7 @@ import PostNavigation from "@/app/ui/PostNavigation";
 import { format } from "date-fns";
 import Markdown from "markdown-to-jsx";
 import { usePathname, useParams } from "next/navigation";
+import { HOST } from "@/lib/url";
 
 type Topic =
   | "personal"
@@ -48,7 +49,7 @@ export default function ArticlePage() {
   const [article, setArticle] = useState<Article>();
   useEffect(() => {
     const getAnArticle = async () => {
-      let url = `http://localhost:4000/api/articles/${params.slug}`;
+      let url = `http://${HOST}/api/articles/${params.slug}`;
       const response = await fetch(url, {
         credentials: "include",
         cache: "no-store",
