@@ -5,6 +5,7 @@ import PostNavigation from "@/app/ui/PostNavigation";
 import { format } from "date-fns";
 import ArticlePreview from "@/app/ui/journals/ArticlePreview";
 import { usePathname } from "next/navigation";
+import { HOST } from "@/lib/url";
 
 type Topic =
   | "personal"
@@ -52,7 +53,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
   const [articlePreviews, setArticlePreviews] = useState<ArticlePreview[]>();
   useEffect(() => {
     const getArticlePreviewsInJournal = async () => {
-      let url = `http://localhost:4000/api/journals/${params.vol}`;
+      let url = `http://${HOST}/api/journals/${params.vol}`;
       const response = await fetch(url, {
         credentials: "include",
         cache: "no-store",

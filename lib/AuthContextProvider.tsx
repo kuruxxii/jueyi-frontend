@@ -2,6 +2,7 @@
 
 import { createContext, useState, useEffect, useContext } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { HOST } from "@/lib/url";
 
 type User = { email: string; endDate: string };
 
@@ -23,7 +24,7 @@ export default function AuthContextProvider({
   const [user, setUser] = useState<User | undefined>(undefined);
   const logout = async () => {
     try {
-      await fetch("http://localhost:4000/api/auth/logout", {
+      await fetch(`http://${HOST}/api/auth/logout`, {
         credentials: "include",
       });
       setIsAuthenticated(false);
@@ -37,7 +38,7 @@ export default function AuthContextProvider({
     // Check initial authentication status when the app loads
     const checkAuthStatus = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/auth/status", {
+        const response = await fetch(`http://${HOST}/api/auth/status`, {
           credentials: "include",
         });
         const json = await response.json();

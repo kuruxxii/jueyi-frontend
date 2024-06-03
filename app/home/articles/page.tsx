@@ -8,6 +8,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Pagination from "@/app/ui/Pagination";
 import ArticlePreview from "@/app/ui/articles/ArticlePreview";
 import Sidebar from "@/app/ui/Sidebar";
+import { HOST } from "@/lib/url";
 
 type ArticlePreview = {
   slug: string;
@@ -66,7 +67,7 @@ export default function ArticlePreviewsPage() {
   };
   useEffect(() => {
     const getFilteredArticlePreviewTotalPages = async () => {
-      let url = `http://localhost:4000/api/articles/pages`;
+      let url = `http://${HOST}/api/articles/pages`;
       if (selectedTopic !== "all") {
         url += `?topic=${selectedTopic}`;
       }
@@ -81,7 +82,7 @@ export default function ArticlePreviewsPage() {
   }, [selectedTopic]);
   useEffect(() => {
     const getFilteredArticlePreviews = async () => {
-      let url = `http://localhost:4000/api/articles?page=${currentPage}`;
+      let url = `http://${HOST}/api/articles?page=${currentPage}`;
       if (selectedTopic !== "all") {
         url += `&topic=${selectedTopic}`;
       }

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import Image from "next/image";
+import { HOST } from "@/lib/url";
 
 type Journal = {
   title: string;
@@ -32,7 +33,7 @@ export default function JournalsPage() {
     const fetchPaginatedJournals = async (page: number) => {
       try {
         const response = await fetch(
-          `http://localhost:4000/api/journals?page=${page}`,
+          `http://${HOST}/api/journals?page=${page}`,
           {
             credentials: "include",
             cache: "no-store",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { HOST } from "@/lib/url";
 
 type Recommendation = {
   slug: string;
@@ -17,7 +18,7 @@ export default function Sidebar({
   const [recommendations, setRecommendations] = useState<Recommendation[]>();
   useEffect(() => {
     const getRecommendations = async () => {
-      let url = `http://localhost:4000/api/articles/recommendations`;
+      let url = `http://${HOST}/api/articles/recommendations`;
       const response = await fetch(url, {
         credentials: "include",
         cache: "no-store",

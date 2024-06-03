@@ -2,12 +2,13 @@
 
 import gsap from "gsap";
 import { useState, useEffect, useRef } from "react";
+import { HOST } from "@/lib/url";
 
 export default function NewsTicker() {
   const [news, setNews] = useState([]);
   useEffect(() => {
     const getNews = async () => {
-      let url = `http://localhost:4000/api/news`;
+      let url = `http://${HOST}/api/news`;
       const response = await fetch(url, {
         credentials: "include",
       });
