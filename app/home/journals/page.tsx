@@ -75,9 +75,11 @@ export default function JournalsPage() {
               {format(new Date(journal.createdAt), "yyyy-MM-dd")}
               <span>Vol. {journal.vol}</span>
             </div>
-            <Link href={`/home/journals/${journal.vol}`}>
+            <Link
+              href={`/home/journals/${journal.vol}`}
+              className="hidden sm:block h-96 my-8">
               <Image
-                className="my-8 hover:scale-105 transition h-96"
+                className="w-full h-full object-cover hover:scale-105 transition"
                 src={journal.coverUrl}
                 alt={journal.title}
                 width={430}
