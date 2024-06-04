@@ -21,7 +21,7 @@ const menu: MenuItem[] = [
   },
   {
     href: "https://space.bilibili.com/611092306?spm_id_from=333.999.0.0",
-    label: "好书推荐",
+    label: "知识频道",
   },
 ];
 
