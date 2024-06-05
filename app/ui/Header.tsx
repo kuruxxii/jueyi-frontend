@@ -93,10 +93,13 @@ export default function Header() {
               className="w-72 pt-14"
               aria-label="User Menu Toggle">
               <nav
-                className="flex flex-col h-[50rem] justify-between"
+                className="h-full flex flex-col justify-between"
                 aria-labelledby="mobile-nav">
                 <div className="flex flex-col gap-6">
-                  订阅到期日期： {format(new Date(user!.endDate), "yyyy-MM-dd")}
+                  <span className="block">
+                    订阅到期日期：{" "}
+                    {format(new Date(user!.endDate), "yyyy-MM-dd")}
+                  </span>
                   <Link href="https://jinshuju.net/f/PHtWG1" target="_blank">
                     <Button>续费订阅</Button>
                   </Link>
