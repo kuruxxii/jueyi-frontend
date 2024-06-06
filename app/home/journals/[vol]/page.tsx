@@ -52,6 +52,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
   }, [pathname]);
   const [journal, setJournal] = useState<Journal>();
   const [articlePreviews, setArticlePreviews] = useState<ArticlePreview[]>();
+  const [nope, setNope] = useState(false);
   useEffect(() => {
     const getArticlePreviewsInJournal = async () => {
       let url = `http://${HOST}/api/journals/${params.vol}`;
@@ -60,15 +61,26 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
         cache: "no-store",
       });
       const { journal, articlePreviews } = await response.json();
-      setJournal(journal);
-      setArticlePreviews(articlePreviews);
+      if (response.ok) {
+        setJournal(journal);
+        setArticlePreviews(articlePreviews);
+      } else {
+        setNope(true);
+      }
     };
     getArticlePreviewsInJournal();
   }, [params.vol]);
-  if (!journal || !articlePreviews) {
+  if (nope) {
     return (
       <main className="max-w-[95rem] w-full h-screen mx-auto sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2 flex justify-center items-center">
         <p className="text-2xl pb-16">前面的區域，以後再來探索吧！</p>
+      </main>
+    );
+  }
+  if (!journal || !articlePreviews) {
+    return (
+      <main className="max-w-[95rem] w-full h-screen mx-auto sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2 flex justify-center items-center">
+        <p className="text-2xl pb-16">火速加載中！ ！</p>
       </main>
     );
   } else {
