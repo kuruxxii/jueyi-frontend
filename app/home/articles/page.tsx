@@ -67,29 +67,41 @@ export default function ArticlePreviewsPage() {
   };
   useEffect(() => {
     const getFilteredArticlePreviewTotalPages = async () => {
-      let url = `http://${HOST}/api/articles/pages`;
-      if (selectedTopic !== "all") {
-        url += `?topic=${selectedTopic}`;
+      try {
+        let url = `http://${HOST}/api/articles/pages`;
+        if (selectedTopic !== "all") {
+          url += `?topic=${selectedTopic}`;
+        }
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const json = await response.json();
+        if (response.ok) {
+          setTotalPages(json);
+        }
+      } catch (error) {
+        console.log(error);
       }
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const json = await response.json();
-      setTotalPages(json);
     };
     getFilteredArticlePreviewTotalPages();
   }, [selectedTopic]);
   useEffect(() => {
     const getFilteredArticlePreviews = async () => {
-      let url = `http://${HOST}/api/articles?page=${currentPage}`;
-      if (selectedTopic !== "all") {
-        url += `&topic=${selectedTopic}`;
+      try {
+        let url = `http://${HOST}/api/articles?page=${currentPage}`;
+        if (selectedTopic !== "all") {
+          url += `&topic=${selectedTopic}`;
+        }
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const articlePreviews = await response.json();
+        if (response.ok) {
+          setArticlePreviews(articlePreviews);
+        }
+      } catch (error) {
+        console.log(error);
       }
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const articlePreviews = await response.json();
-      setArticlePreviews(articlePreviews);
     };
     getFilteredArticlePreviews();
   }, [currentPage, selectedTopic]);

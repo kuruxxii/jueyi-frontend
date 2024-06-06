@@ -55,15 +55,20 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
   const [nope, setNope] = useState(false);
   useEffect(() => {
     const getArticlePreviewsInJournal = async () => {
-      let url = `http://${HOST}/api/journals/${params.vol}`;
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const { journal, articlePreviews } = await response.json();
-      if (response.ok) {
-        setJournal(journal);
-        setArticlePreviews(articlePreviews);
-      } else {
+      try {
+        let url = `http://${HOST}/api/journals/${params.vol}`;
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const { journal, articlePreviews } = await response.json();
+        if (response.ok) {
+          setJournal(journal);
+          setArticlePreviews(articlePreviews);
+        } else {
+          setNope(true);
+        }
+      } catch (error) {
+        console.log(error);
         setNope(true);
       }
     };

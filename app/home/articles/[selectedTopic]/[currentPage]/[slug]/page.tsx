@@ -51,14 +51,19 @@ export default function ArticlePage() {
   const [nope, setNope] = useState(false);
   useEffect(() => {
     const getAnArticle = async () => {
-      let url = `http://${HOST}/api/articles/${params.slug}`;
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const json = await response.json();
-      if (response.ok) {
-        setArticle(json);
-      } else {
+      try {
+        let url = `http://${HOST}/api/articles/${params.slug}`;
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const json = await response.json();
+        if (response.ok) {
+          setArticle(json);
+        } else {
+          setNope(true);
+        }
+      } catch (error) {
+        console.log(error);
         setNope(true);
       }
     };
