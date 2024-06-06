@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import ArticlePreview from "@/app/ui/journals/ArticlePreview";
 import { usePathname } from "next/navigation";
 import { HOST } from "@/lib/url";
+import Image from "next/image";
 
 type Topic =
   | "personal"
@@ -94,7 +95,14 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
           </div>
         </div>
         <div>
-          <img src={journal.coverUrl} alt={journal.title} />
+          {/* <img src={journal.coverUrl} alt={journal.title} /> */}
+          <Image
+            src={journal.coverUrl}
+            alt={journal.title}
+            width={1522}
+            height={856}
+            priority={true}
+          />
         </div>
         <section className="mx-auto mt-6 mb-24">
           {articlePreviews.map((article) => (
