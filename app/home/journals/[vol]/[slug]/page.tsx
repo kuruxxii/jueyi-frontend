@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import Markdown from "markdown-to-jsx";
 import { usePathname, useParams } from "next/navigation";
 import { HOST } from "@/lib/url";
+import Image from "next/image";
 
 type Topic =
   | "personal"
@@ -94,7 +95,14 @@ export default function ArticlePage() {
           </span>
         </div>
         <div>
-          <img src={article.coverUrl} alt={article.title} />
+          {/* <img src={article.coverUrl} alt={article.title} /> */}
+          <Image
+            src={article.coverUrl}
+            alt={article.title}
+            width={1522}
+            height={856}
+            priority={true}
+          />
         </div>
         <article className="max-w-[900px] prose-lg lg:prose-2xl mx-auto mt-6 mb-24 text-black">
           <Markdown>{article.content}</Markdown>
