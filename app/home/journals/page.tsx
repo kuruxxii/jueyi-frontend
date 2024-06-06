@@ -36,7 +36,6 @@ export default function JournalsPage() {
           `http://${HOST}/api/journals?page=${page}`,
           {
             credentials: "include",
-            cache: "no-store",
           }
         );
         const { journals, totalPages } = await response.json();

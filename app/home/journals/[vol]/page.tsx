@@ -58,7 +58,6 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
       let url = `http://${HOST}/api/journals/${params.vol}`;
       const response = await fetch(url, {
         credentials: "include",
-        cache: "no-store",
       });
       const { journal, articlePreviews } = await response.json();
       if (response.ok) {

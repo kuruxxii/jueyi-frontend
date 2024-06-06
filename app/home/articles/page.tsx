@@ -73,7 +73,6 @@ export default function ArticlePreviewsPage() {
       }
       const response = await fetch(url, {
         credentials: "include",
-        cache: "no-store",
       });
       const json = await response.json();
       setTotalPages(json);
@@ -88,7 +87,6 @@ export default function ArticlePreviewsPage() {
       }
       const response = await fetch(url, {
         credentials: "include",
-        cache: "no-store",
       });
       const articlePreviews = await response.json();
       setArticlePreviews(articlePreviews);

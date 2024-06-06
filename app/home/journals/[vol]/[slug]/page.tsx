@@ -50,7 +50,6 @@ export default function ArticlePage() {
       let url = `http://${HOST}/api/articles/${params.slug}`;
       const response = await fetch(url, {
         credentials: "include",
-        cache: "no-store",
       });
       const json = await response.json();
       if (response.ok) {

@@ -21,7 +21,6 @@ export default function Sidebar({
       let url = `http://${HOST}/api/articles/recommendations`;
       const response = await fetch(url, {
         credentials: "include",
-        cache: "no-store",
       });
       const json = await response.json();
       setRecommendations(json);
