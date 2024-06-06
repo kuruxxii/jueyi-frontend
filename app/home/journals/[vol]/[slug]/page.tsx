@@ -44,6 +44,7 @@ export default function ArticlePage() {
     window.scroll(0, 0);
   }, [pathname]);
   const [article, setArticle] = useState<Article>();
+  const [nope, setNope] = useState(false);
   useEffect(() => {
     const getAnArticle = async () => {
       let url = `http://${HOST}/api/articles/${params.slug}`;
@@ -52,14 +53,25 @@ export default function ArticlePage() {
         cache: "no-store",
       });
       const json = await response.json();
-      setArticle(json);
+      if (response.ok) {
+        setArticle(json);
+      } else {
+        setNope(true);
+      }
     };
     getAnArticle();
   }, [params.slug]);
-  if (!article) {
+  if (nope) {
     return (
       <main className="max-w-[95rem] w-full h-screen mx-auto sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2 flex justify-center items-center">
         <p className="text-2xl pb-16">前面的區域，以後再來探索吧！</p>
+      </main>
+    );
+  }
+  if (!article) {
+    return (
+      <main className="max-w-[95rem] w-full h-screen mx-auto sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2 flex justify-center items-center">
+        <p className="text-2xl pb-16">火速加載中！ ！</p>
       </main>
     );
   } else {
