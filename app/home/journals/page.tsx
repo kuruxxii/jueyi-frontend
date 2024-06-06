@@ -39,8 +39,10 @@ export default function JournalsPage() {
           }
         );
         const { journals, totalPages } = await response.json();
-        setJournals((prevJournals) => [...prevJournals, ...journals]);
-        setTotalPages(totalPages);
+        if (response.ok) {
+          setJournals((prevJournals) => [...prevJournals, ...journals]);
+          setTotalPages(totalPages);
+        }
       } catch (error) {
         console.error("获取周刊失败", error);
       }
