@@ -8,12 +8,18 @@ export default function NewsTicker() {
   const [news, setNews] = useState([]);
   useEffect(() => {
     const getNews = async () => {
-      let url = `http://${HOST}/api/news`;
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const { content } = await response.json();
-      setNews(content);
+      try {
+        let url = `http://${HOST}/api/news`;
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const { content } = await response.json();
+        if (response.ok) {
+          setNews(content);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
     getNews();
   }, []);

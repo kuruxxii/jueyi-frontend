@@ -18,12 +18,18 @@ export default function Sidebar({
   const [recommendations, setRecommendations] = useState<Recommendation[]>();
   useEffect(() => {
     const getRecommendations = async () => {
-      let url = `http://${HOST}/api/articles/recommendations`;
-      const response = await fetch(url, {
-        credentials: "include",
-      });
-      const json = await response.json();
-      setRecommendations(json);
+      try {
+        let url = `http://${HOST}/api/articles/recommendations`;
+        const response = await fetch(url, {
+          credentials: "include",
+        });
+        const json = await response.json();
+        if (response.ok) {
+          setRecommendations(json);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
     getRecommendations();
   }, []);
