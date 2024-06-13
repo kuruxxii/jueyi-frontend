@@ -49,7 +49,7 @@ export default function LandingPage() {
     // ✅ This will be type-safe and validated.
     // console.log(values);
     try {
-      const response = await fetch(`http://${HOST}/api/auth/login`, {
+      const response = await fetch(`${HOST}/api/auth/login`, {
         credentials: "include",
         method: "POST",
         headers: { "Content-Type": "application/json" },

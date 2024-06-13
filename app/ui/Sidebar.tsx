@@ -19,7 +19,7 @@ export default function Sidebar({
   useEffect(() => {
     const getRecommendations = async () => {
       try {
-        let url = `http://${HOST}/api/articles/recommendations`;
+        let url = `${HOST}/api/articles/recommendations`;
         const response = await fetch(url, {
           credentials: "include",
         });

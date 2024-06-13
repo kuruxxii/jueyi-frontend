@@ -9,7 +9,7 @@ export default function NewsTicker() {
   useEffect(() => {
     const getNews = async () => {
       try {
-        let url = `http://${HOST}/api/news`;
+        let url = `${HOST}/api/news`;
         const response = await fetch(url, {
           credentials: "include",
         });

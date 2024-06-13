@@ -68,7 +68,7 @@ export default function ArticlePreviewsPage() {
   useEffect(() => {
     const getFilteredArticlePreviewTotalPages = async () => {
       try {
-        let url = `http://${HOST}/api/articles/pages`;
+        let url = `${HOST}/api/articles/pages`;
         if (selectedTopic !== "all") {
           url += `?topic=${selectedTopic}`;
         }
@@ -88,7 +88,7 @@ export default function ArticlePreviewsPage() {
   useEffect(() => {
     const getFilteredArticlePreviews = async () => {
       try {
-        let url = `http://${HOST}/api/articles?page=${currentPage}`;
+        let url = `${HOST}/api/articles?page=${currentPage}`;
         if (selectedTopic !== "all") {
           url += `&topic=${selectedTopic}`;
         }

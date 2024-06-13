@@ -52,7 +52,7 @@ export default function ArticlePage() {
   useEffect(() => {
     const getAnArticle = async () => {
       try {
-        let url = `http://${HOST}/api/articles/${params.slug}`;
+        let url = `${HOST}/api/articles/${params.slug}`;
         const response = await fetch(url, {
           credentials: "include",
         });
