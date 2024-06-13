@@ -27,7 +27,7 @@ export default function JournalsPage() {
   In React Strict Mode, useEffect (along with several other lifecycle methods) 
   is intentionally invoked twice during development.
   */
-  const isMounted = useRef(false);
+  // const isMounted = useRef(false);
 
   useEffect(() => {
     const fetchPaginatedJournals = async (page: number) => {
@@ -47,11 +47,12 @@ export default function JournalsPage() {
         console.error("获取周刊失败", error);
       }
     };
-    if (isMounted.current) {
-      fetchPaginatedJournals(page);
-    } else {
-      isMounted.current = true;
-    }
+    // if (isMounted.current) {
+    //   fetchPaginatedJournals(page);
+    // } else {
+    //   isMounted.current = true;
+    // }
+    fetchPaginatedJournals(page);
   }, [page]);
 
   const loadMore = () => {
