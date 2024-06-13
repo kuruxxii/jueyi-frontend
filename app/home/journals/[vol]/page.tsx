@@ -118,6 +118,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
             width={1522}
             height={856}
             priority={true}
+            placeholder="empty"
           />
         </div>
         <section className="mx-auto mt-6 mb-24">

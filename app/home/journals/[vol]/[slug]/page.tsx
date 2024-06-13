@@ -118,6 +118,7 @@ export default function ArticlePage() {
             width={1522}
             height={856}
             priority={true}
+            placeholder="empty"
           />
         </div>
         <article className="max-w-[900px] prose-lg lg:prose-2xl mx-auto mt-6 mb-24 text-black">

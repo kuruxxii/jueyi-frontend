@@ -85,6 +85,7 @@ export default function JournalsPage() {
                 alt={journal.title}
                 width={430}
                 height={430}
+                placeholder="empty"
               />
             </Link>
             <h2 className="text-3xl font-extrabold mb-6">
