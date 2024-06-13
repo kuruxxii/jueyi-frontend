@@ -32,12 +32,9 @@ export default function JournalsPage() {
   useEffect(() => {
     const fetchPaginatedJournals = async (page: number) => {
       try {
-        const response = await fetch(
-          `http://${HOST}/api/journals?page=${page}`,
-          {
-            credentials: "include",
-          }
-        );
+        const response = await fetch(`${HOST}/api/journals?page=${page}`, {
+          credentials: "include",
+        });
         const { journals, totalPages } = await response.json();
         if (response.ok) {
           setJournals((prevJournals) => [...prevJournals, ...journals]);

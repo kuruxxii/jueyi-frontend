@@ -56,7 +56,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
   useEffect(() => {
     const getArticlePreviewsInJournal = async () => {
       try {
-        let url = `http://${HOST}/api/journals/${params.vol}`;
+        let url = `${HOST}/api/journals/${params.vol}`;
         const response = await fetch(url, {
           credentials: "include",
         });

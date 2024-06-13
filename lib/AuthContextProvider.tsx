@@ -24,7 +24,7 @@ export default function AuthContextProvider({
   const [user, setUser] = useState<User | undefined>(undefined);
   const logout = async () => {
     try {
-      await fetch(`http://${HOST}/api/auth/logout`, {
+      await fetch(`${HOST}/api/auth/logout`, {
         credentials: "include",
       });
       setIsAuthenticated(false);
@@ -38,7 +38,7 @@ export default function AuthContextProvider({
     // Check initial authentication status when the app loads
     const checkAuthStatus = async () => {
       try {
-        const response = await fetch(`http://${HOST}/api/auth/status`, {
+        const response = await fetch(`${HOST}/api/auth/status`, {
           credentials: "include",
         });
         const json = await response.json();
