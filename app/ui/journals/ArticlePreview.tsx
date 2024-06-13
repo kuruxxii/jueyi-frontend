@@ -35,6 +35,7 @@ export default function ArticlePreview({
             alt={title}
             width={240}
             height={240}
+            placeholder="empty"
           />
         </Link>
         <section className="flex flex-col justify-between h-60">
