@@ -14,6 +14,7 @@ export default function PageTitle({ imgSrc, imgAlt }: PageTitleProps) {
           alt={imgAlt}
           width={1500}
           height={350}
+          quality={40}
           className="py-6 md:py-16 h-full w-full"
         />
       )}

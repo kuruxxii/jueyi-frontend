@@ -38,6 +38,7 @@ export default function ArticlePreview({
             width={240}
             height={240}
             placeholder="empty"
+            quality={40}
           />
         </Link>
         <section className="flex flex-col justify-between h-60">
