@@ -39,6 +39,7 @@ export default function ArticlePreview({
             height={240}
             placeholder="empty"
             quality={40}
+            loading="lazy"
           />
         </Link>
         <section className="flex flex-col justify-between h-60">
