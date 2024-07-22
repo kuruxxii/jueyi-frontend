@@ -119,7 +119,7 @@ export default function ArticlePage() {
             height={856}
             // priority={true}
             placeholder="empty"
-            quality={40}
+            quality={10}
             loading="lazy"
           />
         </div>

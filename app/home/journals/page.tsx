@@ -84,7 +84,7 @@ export default function JournalsPage() {
                 width={430}
                 height={430}
                 placeholder="empty"
-                quality={40}
+                quality={10}
                 loading="lazy"
               />
             </Link>

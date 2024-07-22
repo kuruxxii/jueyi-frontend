@@ -119,7 +119,7 @@ export default function JournalPage({ params }: { params: { vol: number } }) {
             height={856}
             // priority={true}
             placeholder="empty"
-            quality={40}
+            quality={10}
             loading="lazy"
           />
         </div>

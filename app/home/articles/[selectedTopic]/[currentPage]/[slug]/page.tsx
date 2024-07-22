@@ -123,7 +123,7 @@ export default function ArticlePage() {
             width={1522}
             height={856}
             placeholder="empty"
-            quality={40}
+            quality={10}
             loading="lazy"
           />
         </div>
