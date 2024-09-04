@@ -32,7 +32,7 @@ export default function Header() {
       <div className="flex justify-between items-center py-3 border-b border-black">
         <div>
           <Link href="/home/articles">
-            <div className="font-bold text-3xl tracking-wide">觉意阅读</div>
+            <div className="font-bold text-3xl tracking-wide">DALSHOUIE</div>
           </Link>
         </div>
         <Sheet>
